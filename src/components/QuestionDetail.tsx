@@ -78,7 +78,8 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
   useEffect(() => {
     const fetchDetail = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/question-details/${questionId}`);
+        const apiBase = import.meta.env.PROD ? "/api" : "http://localhost:3001";
+        const res = await fetch(`${apiBase}/question-details/${questionId}`);
         if (!res.ok) {
           setNotFound(true);
           return;
@@ -95,7 +96,8 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
     const fetchFallback = async () => {
       if (!question && questionId.startsWith("dc-")) {
         try {
-          const res = await fetch(`http://localhost:3001/daily-challenge/${questionId}`);
+          const apiBase = import.meta.env.PROD ? "/api" : "http://localhost:3001";
+          const res = await fetch(`${apiBase}/daily-challenge/${questionId}`);
           if (res.ok) {
             const data = await res.json();
             setFallbackQuestion(data);

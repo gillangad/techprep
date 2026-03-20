@@ -1,6 +1,6 @@
 import type { Activity, DailyChallenge, LeaderboardUser, Question } from "../types";
 
-const API_BASE = "http://localhost:3001";
+const API_BASE = import.meta.env.PROD ? "/api" : "http://localhost:3001";
 
 export async function fetchQuestions(): Promise<Question[]> {
   const res = await fetch(`${API_BASE}/questions`);
