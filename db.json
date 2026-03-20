@@ -1,0 +1,424 @@
+{
+  "questions": [
+    {
+      "id": "dsa-1",
+      "title": "Two Sum",
+      "difficulty": "Easy",
+      "section": "dsa",
+      "topic": "Arrays",
+      "status": "completed",
+      "lastAttemptedAt": "2026-03-19T10:00:00Z"
+    },
+    {
+      "id": "dsa-3",
+      "title": "Merge Two Sorted Lists",
+      "difficulty": "Easy",
+      "section": "dsa",
+      "topic": "Linked Lists",
+      "status": "completed",
+      "lastAttemptedAt": "2026-03-18T16:15:00Z"
+    },
+    {
+      "id": "dsa-5",
+      "title": "Binary Tree Level Order Traversal",
+      "difficulty": "Medium",
+      "section": "dsa",
+      "topic": "Trees",
+      "status": "attempted",
+      "lastAttemptedAt": "2026-03-17T12:30:00Z"
+    },
+    {
+      "id": "sql-1",
+      "title": "Employee Salary Query",
+      "difficulty": "Easy",
+      "section": "sql",
+      "topic": "Joins",
+      "status": "completed",
+      "lastAttemptedAt": "2026-03-19T07:20:00Z"
+    },
+    {
+      "id": "sql-3",
+      "title": "Second Highest Salary",
+      "difficulty": "Medium",
+      "section": "sql",
+      "topic": "Subqueries",
+      "status": "completed",
+      "lastAttemptedAt": "2026-03-18T09:25:00Z"
+    },
+    {
+      "id": "sql-6",
+      "title": "Nth Highest Salary Using Dense Rank",
+      "difficulty": "Hard",
+      "section": "sql",
+      "topic": "Window Functions",
+      "status": "attempted",
+      "lastAttemptedAt": "2026-03-16T20:10:00Z"
+    },
+    {
+      "id": "core-1",
+      "title": "Process vs Thread",
+      "difficulty": "Easy",
+      "section": "core-cs",
+      "topic": "OS",
+      "status": "completed",
+      "lastAttemptedAt": "2026-03-19T06:00:00Z"
+    },
+    {
+      "id": "core-3",
+      "title": "ACID Properties Explained",
+      "difficulty": "Easy",
+      "section": "core-cs",
+      "topic": "DBMS",
+      "status": "completed",
+      "lastAttemptedAt": "2026-03-17T15:30:00Z"
+    },
+    {
+      "id": "core-5",
+      "title": "TCP vs UDP",
+      "difficulty": "Easy",
+      "section": "core-cs",
+      "topic": "Networking",
+      "status": "completed",
+      "lastAttemptedAt": "2026-03-17T10:10:00Z"
+    }
+  ],
+  "leaderboard": [
+    {
+      "id": 1,
+      "rank": 1,
+      "name": "Arjun Kumar",
+      "score": 2450,
+      "avatar": "AK"
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "name": "Priya Sharma",
+      "score": 2380,
+      "avatar": "PS"
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "name": "Neha Verma",
+      "score": 2315,
+      "avatar": "NV"
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "name": "Rohan Mehta",
+      "score": 2260,
+      "avatar": "RM"
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "name": "Isha Nair",
+      "score": 2190,
+      "avatar": "IN"
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "name": "Karan Singh",
+      "score": 2130,
+      "avatar": "KS"
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "name": "Divya Rao",
+      "score": 2085,
+      "avatar": "DR"
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "name": "Aman Jain",
+      "score": 2010,
+      "avatar": "AJ"
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "name": "Sneha Iyer",
+      "score": 1955,
+      "avatar": "SI"
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "name": "Rahul Das",
+      "score": 1890,
+      "avatar": "RD"
+    }
+  ],
+  "activities": [
+    {
+      "id": "1",
+      "message": "Solved Two Sum",
+      "timestamp": "2 hours ago",
+      "type": "solved"
+    },
+    {
+      "id": "2",
+      "message": "Completed Arrays topic",
+      "timestamp": "5 hours ago",
+      "type": "completed-topic"
+    },
+    {
+      "id": "3",
+      "message": "7-day streak achieved!",
+      "timestamp": "1 day ago",
+      "type": "streak"
+    },
+    {
+      "id": "4",
+      "message": "Earned SQL Explorer badge",
+      "timestamp": "1 day ago",
+      "type": "badge"
+    },
+    {
+      "id": "5",
+      "message": "Solved Process vs Thread",
+      "timestamp": "2 days ago",
+      "type": "solved"
+    },
+    {
+      "id": "6",
+      "message": "Completed Joins topic",
+      "timestamp": "2 days ago",
+      "type": "completed-topic"
+    },
+    {
+      "id": "7",
+      "message": "5-day streak achieved!",
+      "timestamp": "3 days ago",
+      "type": "streak"
+    },
+    {
+      "id": "8",
+      "message": "Earned Dynamic Programming badge",
+      "timestamp": "3 days ago",
+      "type": "badge"
+    },
+    {
+      "id": "9",
+      "message": "Solved Merge Intervals",
+      "timestamp": "4 days ago",
+      "type": "solved"
+    }
+  ],
+  "daily-challenge": [
+    {
+      "id": "dc-1",
+      "title": "Longest Palindromic Substring",
+      "difficulty": "Medium",
+      "section": "dsa",
+      "topic": "Strings",
+      "completed": false
+    },
+    {
+      "id": "dc-2",
+      "title": "Employees Earning More Than Average",
+      "difficulty": "Medium",
+      "section": "sql",
+      "topic": "Subqueries",
+      "completed": false
+    },
+    {
+      "id": "dc-3",
+      "title": "Virtual Memory Paging",
+      "difficulty": "Medium",
+      "section": "core-cs",
+      "topic": "OS",
+      "completed": false
+    }
+  ],
+  "question-details": [
+    {
+      "id": "dsa-1",
+      "description": "Given an array of integers nums and an integer target, return the indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.",
+      "examples": [
+        {
+          "input": "nums = [2, 7, 11, 15], target = 9",
+          "output": "[0, 1]",
+          "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+        },
+        {
+          "input": "nums = [3, 2, 4], target = 6",
+          "output": "[1, 2]",
+          "explanation": "Because nums[1] + nums[2] == 6, we return [1, 2]."
+        }
+      ],
+      "hint": "Use a hash map to store each number's index as you iterate, and check if the complement (target - current number) already exists in the map.",
+      "solution": {
+        "explanation": "We iterate through the array once, and for each element we check whether target minus the current element has already been seen. A hash map lets us do this lookup in O(1), giving us an overall O(n) time complexity.",
+        "code": "def two_sum(nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return []"
+      }
+    },
+    {
+      "id": "dsa-3",
+      "description": "You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted list by splicing together the nodes of the first two lists. Return the head of the merged linked list.",
+      "examples": [
+        {
+          "input": "list1 = [1, 2, 4], list2 = [1, 3, 4]",
+          "output": "[1, 1, 2, 3, 4, 4]",
+          "explanation": "The two sorted lists are merged into a single sorted list by comparing nodes one by one."
+        }
+      ],
+      "hint": "Use a dummy head node and a pointer to build the merged list by comparing the current nodes of both lists at each step.",
+      "solution": {
+        "explanation": "Create a dummy node and a tail pointer. At each step compare the heads of both lists, attach the smaller node to tail, and advance that list's pointer. When one list is exhausted, attach the remainder of the other list. This runs in O(n + m) time.",
+        "code": "def merge_two_lists(list1, list2):\n    dummy = ListNode()\n    tail = dummy\n    while list1 and list2:\n        if list1.val <= list2.val:\n            tail.next = list1\n            list1 = list1.next\n        else:\n            tail.next = list2\n            list2 = list2.next\n        tail = tail.next\n    tail.next = list1 if list1 else list2\n    return dummy.next"
+      }
+    },
+    {
+      "id": "dsa-5",
+      "description": "Given the root of a binary tree, return the level order traversal of its nodes' values (i.e., from left to right, level by level). Each level should be represented as a separate list of values.",
+      "examples": [
+        {
+          "input": "root = [3, 9, 20, null, null, 15, 7]",
+          "output": "[[3], [9, 20], [15, 7]]",
+          "explanation": "Level 0 has node 3, level 1 has nodes 9 and 20, and level 2 has nodes 15 and 7."
+        }
+      ],
+      "hint": "Use a queue (BFS). Process all nodes at the current level before moving to the next level by tracking the queue size at each step.",
+      "solution": {
+        "explanation": "Perform a breadth-first search using a queue. At each level, record the number of nodes currently in the queue, then dequeue exactly that many nodes, collecting their values into a list for that level. Enqueue each node's children as you go. This visits every node once in O(n) time.",
+        "code": "from collections import deque\n\ndef level_order(root):\n    if not root:\n        return []\n    result = []\n    queue = deque([root])\n    while queue:\n        level_size = len(queue)\n        level = []\n        for _ in range(level_size):\n            node = queue.popleft()\n            level.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(level)\n    return result"
+      }
+    },
+    {
+      "id": "sql-1",
+      "description": "Write a SQL query to find employees who earn more than their managers. You are given an Employee table with columns: id, name, salary, and managerId. The managerId column references another employee's id.",
+      "examples": [
+        {
+          "input": "Employee table:\n| id | name  | salary | managerId |\n|----|-------|--------|-----------|\n| 1  | Joe   | 70000  | 3         |\n| 2  | Henry | 80000  | 4         |\n| 3  | Sam   | 60000  | null      |\n| 4  | Max   | 90000  | null      |",
+          "output": "| name |\n|------|\n| Joe  |",
+          "explanation": "Joe earns 70000 which is more than his manager Sam's salary of 60000."
+        }
+      ],
+      "hint": "Join the Employee table to itself, matching each employee to their manager via managerId, then compare salaries.",
+      "solution": {
+        "explanation": "Use a self-join to pair each employee with their manager. The join condition links the employee's managerId to the manager's id. Then filter rows where the employee's salary exceeds the manager's salary.",
+        "code": "SELECT e.name\nFROM Employee e\nJOIN Employee m ON e.managerId = m.id\nWHERE e.salary > m.salary;"
+      }
+    },
+    {
+      "id": "sql-3",
+      "description": "Write a SQL query to find the second highest distinct salary from the Employee table. If there is no second highest salary, the query should return null.",
+      "examples": [
+        {
+          "input": "Employee table:\n| id | salary |\n|----|--------|\n| 1  | 100    |\n| 2  | 200    |\n| 3  | 300    |",
+          "output": "| SecondHighestSalary |\n|---------------------|\n| 200                 |",
+          "explanation": "The highest salary is 300 and the second highest is 200."
+        },
+        {
+          "input": "Employee table:\n| id | salary |\n|----|--------|\n| 1  | 100    |",
+          "output": "| SecondHighestSalary |\n|---------------------|\n| null                |",
+          "explanation": "There is only one distinct salary, so the second highest does not exist and null is returned."
+        }
+      ],
+      "hint": "Use a subquery to exclude the maximum salary, then select the max of the remaining values. Wrapping it in an outer SELECT ensures null is returned when there's no result.",
+      "solution": {
+        "explanation": "First find the maximum salary, then find the maximum salary that is less than that value. Wrapping the subquery in a SELECT ensures that if no second highest exists, null is returned instead of an empty result set.",
+        "code": "SELECT\n  (SELECT DISTINCT salary\n   FROM Employee\n   ORDER BY salary DESC\n   LIMIT 1 OFFSET 1) AS SecondHighestSalary;"
+      }
+    },
+    {
+      "id": "sql-6",
+      "description": "Write a SQL query to find the Nth highest salary from the Employee table using the DENSE_RANK window function. The query should accept N as a parameter and return null if there are fewer than N distinct salary values.",
+      "examples": [
+        {
+          "input": "Employee table:\n| id | salary |\n|----|--------|\n| 1  | 100    |\n| 2  | 200    |\n| 3  | 300    |\n| 4  | 300    |\n\nN = 2",
+          "output": "| NthHighestSalary |\n|------------------|\n| 200              |",
+          "explanation": "DENSE_RANK assigns rank 1 to 300, rank 2 to 200, and rank 3 to 100. The 2nd highest salary is 200."
+        }
+      ],
+      "hint": "Use DENSE_RANK() OVER (ORDER BY salary DESC) to assign ranks to distinct salary values, then filter for rank = N.",
+      "solution": {
+        "explanation": "DENSE_RANK assigns consecutive ranks to distinct salary values without gaps. By ranking salaries in descending order and filtering for rank equal to N, we get the Nth highest salary. Wrapping it in a subquery or CTE keeps it clean and returns null when N exceeds the number of distinct salaries.",
+        "code": "SELECT salary AS NthHighestSalary\nFROM (\n  SELECT salary,\n         DENSE_RANK() OVER (ORDER BY salary DESC) AS rnk\n  FROM Employee\n) ranked\nWHERE rnk = N\nLIMIT 1;"
+      }
+    },
+    {
+      "id": "core-1",
+      "description": "Explain the key differences between a process and a thread. Discuss how they differ in terms of memory, resource allocation, communication, and context switching.",
+      "examples": [],
+      "hint": "Think about memory sharing and resource allocation.",
+      "solution": {
+        "explanation": "A process is an independent program in execution with its own memory space (code, data, heap, and stack segments), file descriptors, and system resources. A thread is a lightweight unit of execution that exists within a process and shares the process's memory space and resources with other threads in the same process. Because threads share the same address space, inter-thread communication is faster and simpler (shared variables), whereas inter-process communication requires mechanisms like pipes, sockets, or shared memory segments. Context switching between threads is cheaper than between processes because threads share most of their memory context. However, a bug in one thread (e.g., a segmentation fault) can crash the entire process, while processes are isolated from each other, making them more robust but more expensive to create and manage.",
+        "code": ""
+      }
+    },
+    {
+      "id": "core-3",
+      "description": "Explain the ACID properties of database transactions and why each property is important for maintaining data integrity.",
+      "examples": [],
+      "hint": "ACID stands for Atomicity, Consistency, Isolation, and Durability — think about what guarantee each one provides.",
+      "solution": {
+        "explanation": "ACID is an acronym describing four key properties of reliable database transactions. Atomicity guarantees that all operations within a transaction are treated as a single unit — either all succeed or all are rolled back, preventing partial updates. Consistency ensures that a transaction brings the database from one valid state to another, enforcing all defined rules, constraints, and triggers. Isolation ensures that concurrent transactions execute independently of each other; intermediate states of a transaction are invisible to other transactions, which prevents issues like dirty reads and phantom reads. Durability guarantees that once a transaction has been committed, its changes are permanent and will survive system crashes, typically achieved through write-ahead logging and checkpointing. Together, these properties ensure data integrity and reliability even in the face of concurrent access and system failures.",
+        "code": ""
+      }
+    },
+    {
+      "id": "core-5",
+      "description": "Compare TCP (Transmission Control Protocol) and UDP (User Datagram Protocol). Discuss their differences in terms of reliability, ordering, speed, and typical use cases.",
+      "examples": [],
+      "hint": "Consider the trade-off between reliability and speed — TCP guarantees delivery while UDP prioritizes low latency.",
+      "solution": {
+        "explanation": "TCP is a connection-oriented protocol that establishes a reliable, ordered channel between sender and receiver through a three-way handshake. It guarantees data delivery via acknowledgments, retransmissions, flow control, and congestion control, making it ideal for applications like web browsing (HTTP), email (SMTP), and file transfers (FTP). UDP is a connectionless protocol that sends datagrams without establishing a connection, offering no guarantees on delivery, ordering, or duplicate protection. This makes UDP faster and lower-overhead, which is well-suited for real-time applications like video streaming, online gaming, VoIP, and DNS lookups where occasional packet loss is acceptable. TCP segments include sequence numbers and require acknowledgment, adding latency, while UDP packets are fire-and-forget with minimal header overhead (8 bytes vs TCP's 20+ bytes).",
+        "code": ""
+      }
+    },
+    {
+      "id": "dc-1",
+      "description": "Given a string s, return the longest substring of s that is a palindrome. A palindrome is a string that reads the same forward and backward. If there are multiple answers of the same length, return any one of them.",
+      "examples": [
+        {
+          "input": "s = \"babad\"",
+          "output": "\"bab\"",
+          "explanation": "\"bab\" is a palindrome of length 3. \"aba\" is also a valid answer."
+        },
+        {
+          "input": "s = \"cbbd\"",
+          "output": "\"bb\"",
+          "explanation": "\"bb\" is the longest palindromic substring with length 2."
+        }
+      ],
+      "hint": "Try expanding around each character (and each pair of adjacent characters) as potential centers of a palindrome.",
+      "solution": {
+        "explanation": "Use the expand-around-center technique. For each index in the string, try expanding outward with that index as the center (for odd-length palindromes) and with that index and the next as the center (for even-length palindromes). Track the longest palindrome found. This approach runs in O(n²) time and O(1) space.",
+        "code": "def longest_palindrome(s):\n    start, max_len = 0, 0\n\n    def expand(l, r):\n        nonlocal start, max_len\n        while l >= 0 and r < len(s) and s[l] == s[r]:\n            if r - l + 1 > max_len:\n                start = l\n                max_len = r - l + 1\n            l -= 1\n            r += 1\n\n    for i in range(len(s)):\n        expand(i, i)\n        expand(i, i + 1)\n\n    return s[start:start + max_len]"
+      }
+    },
+    {
+      "id": "dc-2",
+      "description": "Write a SQL query to find all employees whose salary is greater than the average salary of all employees.",
+      "examples": [
+        {
+          "input": "Employee table:\\n| id | name    | salary |\\n|----|---------|--------|\\n| 1  | Alice   | 50000  |\\n| 2  | Bob     | 60000  |\\n| 3  | Charlie | 40000  |\\n| 4  | Diana   | 70000  |",
+          "output": "| name  | salary |\\n|-------|--------|\\n| Bob   | 60000  |\\n| Diana | 70000  |",
+          "explanation": "Average salary is 55000. Bob (60000) and Diana (70000) earn more."
+        }
+      ],
+      "hint": "Use a subquery with AVG() in the WHERE clause to compare each employee's salary against the overall average.",
+      "solution": {
+        "explanation": "Calculate the average salary using a subquery, then filter employees whose salary exceeds that average. The subquery runs once and the outer query compares each row against it.",
+        "code": "SELECT name, salary\\nFROM Employee\\nWHERE salary > (SELECT AVG(salary) FROM Employee);"
+      }
+    },
+    {
+      "id": "dc-3",
+      "description": "Explain how virtual memory paging works in an operating system. What problem does it solve, and what are the key components involved?",
+      "examples": [],
+      "hint": "Think about how the OS creates an illusion of having more memory than physically available by dividing memory into fixed-size blocks.",
+      "solution": {
+        "explanation": "Virtual memory paging divides physical memory (RAM) and virtual address space into fixed-size blocks called frames and pages respectively. When a process accesses a memory address, the Memory Management Unit (MMU) translates the virtual page number to a physical frame number using a page table. If the page is not in RAM (a page fault), the OS loads it from disk (swap space) into an available frame. This allows processes to use more memory than physically available, provides memory isolation between processes, and eliminates external fragmentation since all pages are the same size. Key components include the page table, TLB (Translation Lookaside Buffer) for fast lookups, and the page replacement algorithm (like LRU) for deciding which pages to evict when memory is full.",
+        "code": ""
+      }
+    }
+  ]
+}
