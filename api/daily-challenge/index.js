@@ -5,10 +5,7 @@ const db = JSON.parse(readFileSync(join(__dirname, "..", "..", "db.json"), "utf-
 
 module.exports = (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  const { id } = req.query;
-  const challenge = db["daily-challenge"].find((c) => c.id === id);
-  if (!challenge) {
-    return res.status(404).json({ error: "Not found" });
-  }
-  res.status(200).json(challenge);
+  const data = db["daily-challenge"];
+  const dayIndex = new Date().getDate() % data.length;
+  res.status(200).json(data[dayIndex]);
 };
