@@ -2,7 +2,7 @@
 
 A student dashboard for interview preparation. Track progress across DSA, SQL, and Core CS topics with role-based access control (Free / Pro / Premium), daily challenges, and a question detail view with hints and solutions. State persists across refreshes.
 
-![TechPrep Dashboard](./public/techprep-dashboard.png)
+![TechPrep Dashboard](./techprep-dashboard.png)
 
 ## Tech Stack
 
