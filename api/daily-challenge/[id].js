@@ -1,9 +1,9 @@
-const { readFileSync } = require("fs");
-const { join } = require("path");
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
-const db = JSON.parse(readFileSync(join(__dirname, "..", "..", "db.json"), "utf-8"));
+const db = JSON.parse(readFileSync(join(process.cwd(), "db.json"), "utf-8"));
 
-module.exports = (req, res) => {
+export default function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   const { id } = req.query;
   const challenge = db["daily-challenge"].find((c) => c.id === id);
@@ -11,4 +11,4 @@ module.exports = (req, res) => {
     return res.status(404).json({ error: "Not found" });
   }
   res.status(200).json(challenge);
-};
+}
