@@ -1,8 +1,8 @@
+
+
 # TechPrep
 
 A student dashboard for interview preparation. Track progress across DSA, SQL, and Core CS topics with role-based access control (Free / Pro / Premium), daily challenges, and a question detail view with hints and solutions. State persists across refreshes.
-
-![TechPrep Dashboard](./techprep-dashboard.png)
 
 ## Tech Stack
 
@@ -21,11 +21,11 @@ A student dashboard for interview preparation. Track progress across DSA, SQL, a
 - Data fetched from JSON Server (`db.json`), not hardcoded in components
 - Question detail page with collapsible hint/solution keeps the UI clean without over-building a full code editor
 - Loading skeletons and empty states for every data-driven section
-- Responsive layout with collapsible sidebar on mobile
+- Responsive layout on mobile
 
 ## State Management
 
-React Context (`AppContext`) + `localStorage`. No Redux — the app has simple shared state that doesn't need reducers or middleware.
+React Context (`AppContext`) + `localStorage`.
 
 Persisted via localStorage:
 - Selected plan (Free/Pro/Premium)
