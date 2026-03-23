@@ -38,9 +38,7 @@ function ProgressOverview() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {["DSA", "SQL", "Core CS", "System Design"].map((label) => (
             <div key={label} className="rounded-xl border border-gray-200 bg-white p-5 text-gray-500 dark:border-[#1f2937] dark:bg-[#0f172a] dark:text-[#94a3b8]">
-              <p className="font-medium text-gray-900 dark:text-white">
-                {label === "System Design" ? "System Design Mock Questions" : `${label} Interview Questions`}
-              </p>
+              <p className="font-medium text-gray-900 dark:text-white">{label === "System Design" ? label : `${label} Interview Questions`}</p>
               <p className="mt-2 text-sm">No data available</p>
             </div>
           ))}

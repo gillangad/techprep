@@ -49,7 +49,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
 
         <nav className="space-y-2">
           {tabs.map((section) => {
-            const { collectionLabel, icon: Icon } = SECTION_META[section];
+            const { navLabel, icon: Icon } = SECTION_META[section];
             const locked = !canAccess(plan, section);
             const active = activeTab === section;
 
@@ -66,7 +66,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
               >
                 <span className="flex items-center gap-2">
                   <Icon className="h-4 w-4" />
-                  {collectionLabel}
+                  {navLabel}
                 </span>
                 {locked && <Lock className="h-4 w-4 text-gray-400 dark:text-[#6b7280]" />}
               </button>

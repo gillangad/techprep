@@ -53,7 +53,7 @@ function DailyChallenge() {
       ) : (
         <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-[#1f2937] dark:bg-[#0f172a]">
           <p className="font-medium text-gray-900 dark:text-white">
-            {getQuestionDisplayTitle(challenge.section, challenge.title)}
+            {getQuestionDisplayTitle(challenge.section, challenge.id, challenge.title)}
           </p>
           <div className="mt-2 flex flex-wrap gap-2 text-xs">
             <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-500 dark:bg-[#334155] dark:text-[#94a3b8]">

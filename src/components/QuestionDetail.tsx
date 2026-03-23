@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, CheckCircle, ChevronDown, ChevronRight, Code, Lightbulb, Moon, Sun } from "lucide-react";
 import { useApp } from "../context/AppContext";
-import { getQuestionDisplayTitle, getSectionName } from "../utils/sections";
+import { getQuestionDisplayTitle, getSectionName, isSystemDesignSection } from "../utils/sections";
 import EmptyState from "./EmptyState";
 import Skeleton from "./Skeleton";
 
@@ -47,6 +47,7 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
   const isDailyChallenge = questionId.startsWith("dc-");
 
   const [fallbackQuestion, setFallbackQuestion] = useState<{
+    id: string;
     title: string;
     difficulty: "Easy" | "Medium" | "Hard";
     topic: string;
@@ -57,6 +58,15 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
   const [dcCompleted, setDcCompleted] = useState(false);
 
   const displayQuestion = question ?? fallbackQuestion;
+  const isSystemDesignQuestion = displayQuestion ? isSystemDesignSection(displayQuestion.section) : false;
+  const promptCardTitle = isSystemDesignQuestion ? "Mock Question" : "Problem Statement";
+  const promptText = isSystemDesignQuestion ? "Mock Question" : detail?.description;
+  const promptExamples = isSystemDesignQuestion ? [] : (detail?.examples ?? []);
+  const hintTitle = isSystemDesignQuestion ? "Mock Question" : "Need a hint?";
+  const hintText = isSystemDesignQuestion ? "Mock Question" : detail?.hint;
+  const solutionTitle = isSystemDesignQuestion ? "Mock Question" : "Reveal Solution";
+  const solutionExplanation = isSystemDesignQuestion ? "Mock Question" : detail?.solution.explanation;
+  const solutionCode = isSystemDesignQuestion ? "Mock Question" : detail?.solution.code;
 
   const isCompleted = isDailyChallenge ? dcCompleted : question?.status === "completed";
 
@@ -154,7 +164,7 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
           {displayQuestion && (
             <div className="mb-6 flex flex-wrap items-center gap-3">
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                {getQuestionDisplayTitle(displayQuestion.section, displayQuestion.title)}
+                {getQuestionDisplayTitle(displayQuestion.section, displayQuestion.id, displayQuestion.title)}
               </h1>
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${getDifficultyClass(displayQuestion.difficulty)}`}>
                 {displayQuestion.difficulty}
@@ -212,9 +222,9 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
             <div className="space-y-6">
               {/* Problem Statement */}
               <div className="rounded-xl border border-gray-200 bg-white/80 p-6 dark:border-[#1f2937] dark:bg-[#1e293b]">
-                <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Problem Statement</h2>
-                <p className="mb-4 text-gray-700 dark:text-[#94a3b8]">{detail?.description}</p>
-                {detail?.examples.map((example, i) => (
+                <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{promptCardTitle}</h2>
+                <p className="mb-4 text-gray-700 dark:text-[#94a3b8]">{promptText}</p>
+                {promptExamples.map((example, i) => (
                   <div key={i} className="mb-3 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-[#1f2937] dark:bg-[#0f172a]">
                     <p className="mb-1 text-sm font-medium text-gray-900 dark:text-white">Example {i + 1}:</p>
                     <p className="text-sm text-gray-700 dark:text-[#94a3b8]">
@@ -240,7 +250,7 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
                   className="flex w-full items-center gap-2 p-6 text-left"
                 >
                   <Lightbulb className="h-5 w-5 text-yellow-500" />
-                  <span className="text-lg font-semibold text-gray-900 dark:text-white">Need a hint?</span>
+                  <span className="text-lg font-semibold text-gray-900 dark:text-white">{hintTitle}</span>
                   {showHint ? (
                     <ChevronDown className="ml-auto h-5 w-5 text-gray-400" />
                   ) : (
@@ -249,7 +259,7 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
                 </button>
                 {showHint && (
                   <div className="border-t border-gray-200 px-6 pb-6 pt-4 dark:border-[#1f2937]">
-                    <p className="text-gray-700 dark:text-[#94a3b8]">{detail?.hint}</p>
+                    <p className="text-gray-700 dark:text-[#94a3b8]">{hintText}</p>
                   </div>
                 )}
               </div>
@@ -262,7 +272,7 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
                   className="flex w-full items-center gap-2 p-6 text-left"
                 >
                   <Code className="h-5 w-5 text-blue-500" />
-                  <span className="text-lg font-semibold text-gray-900 dark:text-white">Reveal Solution</span>
+                  <span className="text-lg font-semibold text-gray-900 dark:text-white">{solutionTitle}</span>
                   {showSolution ? (
                     <ChevronDown className="ml-auto h-5 w-5 text-gray-400" />
                   ) : (
@@ -271,9 +281,9 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
                 </button>
                 {showSolution && (
                   <div className="border-t border-gray-200 px-6 pb-6 pt-4 dark:border-[#1f2937]">
-                    <p className="mb-4 text-gray-700 dark:text-[#94a3b8]">{detail?.solution.explanation}</p>
+                    <p className="mb-4 text-gray-700 dark:text-[#94a3b8]">{solutionExplanation}</p>
                     <pre className="overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100 dark:bg-[#0f172a]">
-                      <code>{detail?.solution.code}</code>
+                      <code>{solutionCode}</code>
                     </pre>
                   </div>
                 )}

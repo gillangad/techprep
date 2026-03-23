@@ -58,7 +58,7 @@ function ContinueLearning() {
                     {question.difficulty}
                   </span>
                   <p className="mt-2 truncate font-medium text-gray-900 dark:text-white">
-                    {getQuestionDisplayTitle(question.section, question.title)}
+                    {getQuestionDisplayTitle(question.section, question.id, question.title)}
                   </p>
                   <p className="text-sm text-gray-500 dark:text-[#94a3b8]">{question.topic}</p>
                 </div>
