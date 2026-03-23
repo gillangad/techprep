@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { fetchQuestions } from "../api/mockApi";
 import type { Plan, Question, Section, TrackProgress } from "../types";
+import { PRACTICE_SECTIONS, SECTION_META } from "../utils/sections";
 
 type AppContextValue = {
   plan: Plan;
@@ -24,7 +25,7 @@ const AppContext = createContext<AppContextValue | undefined>(undefined);
 const PLAN_KEY = "techprep-plan";
 const TAB_KEY = "techprep-active-tab";
 const QUESTIONS_KEY = "techprep-questions";
-const DATA_VERSION = "2";
+const DATA_VERSION = "3";
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useState<Plan>(() => (localStorage.getItem(PLAN_KEY) as Plan) || "free");
@@ -106,16 +107,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
   };
 
   const progress = useMemo(() => {
-    const tracks: Array<{ section: Section; label: string }> = [
-      { section: "dsa", label: "DSA Interview Questions" },
-      { section: "sql", label: "SQL Interview Questions" },
-      { section: "core-cs", label: "Core CS Interview Questions" },
-    ];
-
-    return tracks.map((track) => {
-      const trackQuestions = questions.filter((question) => question.section === track.section);
+    return PRACTICE_SECTIONS.map((section) => {
+      const trackQuestions = questions.filter((question) => question.section === section);
       const completed = trackQuestions.filter((question) => question.status === "completed").length;
-      return { section: track.section, label: track.label, completed, total: trackQuestions.length };
+      return {
+        section,
+        label: SECTION_META[section].collectionLabel,
+        completed,
+        total: trackQuestions.length,
+      };
     });
   }, [questions]);
 

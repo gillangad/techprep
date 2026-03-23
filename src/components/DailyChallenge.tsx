@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchDailyChallenge } from "../api/mockApi";
 import { useApp } from "../context/AppContext";
 import type { DailyChallenge as DailyChallengeType } from "../types";
+import { getQuestionDisplayTitle, getSectionName } from "../utils/sections";
 import EmptyState from "./EmptyState";
 import Skeleton from "./Skeleton";
 
@@ -51,13 +52,15 @@ function DailyChallenge() {
         <EmptyState message="No challenge available today" />
       ) : (
         <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-[#1f2937] dark:bg-[#0f172a]">
-          <p className="font-medium text-gray-900 dark:text-white">{challenge.title}</p>
+          <p className="font-medium text-gray-900 dark:text-white">
+            {getQuestionDisplayTitle(challenge.section, challenge.title)}
+          </p>
           <div className="mt-2 flex flex-wrap gap-2 text-xs">
             <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-500 dark:bg-[#334155] dark:text-[#94a3b8]">
               {challenge.topic}
             </span>
             <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-500 dark:bg-[#334155] dark:text-[#94a3b8]">
-              {challenge.section.toUpperCase()}
+              {getSectionName(challenge.section)}
             </span>
             <span className={`rounded-full px-2 py-1 ${getDifficultyClass(challenge.difficulty)}`}>
               {challenge.difficulty}

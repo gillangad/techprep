@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, CheckCircle, ChevronDown, ChevronRight, Code, Lightbulb, Moon, Sun } from "lucide-react";
 import { useApp } from "../context/AppContext";
+import { getQuestionDisplayTitle, getSectionName } from "../utils/sections";
 import EmptyState from "./EmptyState";
 import Skeleton from "./Skeleton";
 
@@ -152,7 +153,9 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
         <>
           {displayQuestion && (
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{displayQuestion.title}</h1>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                {getQuestionDisplayTitle(displayQuestion.section, displayQuestion.title)}
+              </h1>
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${getDifficultyClass(displayQuestion.difficulty)}`}>
                 {displayQuestion.difficulty}
               </span>
@@ -160,7 +163,7 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
                 {displayQuestion.topic}
               </span>
               <span className="rounded-full bg-gray-500/20 px-2.5 py-0.5 text-xs font-medium text-gray-400 dark:text-gray-300">
-                {displayQuestion.section}
+                {getSectionName(displayQuestion.section)}
               </span>
               {question && (
                 <span

@@ -1,5 +1,6 @@
 import { BookOpen } from "lucide-react";
 import { useApp } from "../context/AppContext";
+import { getQuestionDisplayTitle } from "../utils/sections";
 import EmptyState from "./EmptyState";
 import Skeleton from "./Skeleton";
 
@@ -56,7 +57,9 @@ function ContinueLearning() {
                   <span className={`rounded-full px-2 py-0.5 text-xs ${getDifficultyClass(question.difficulty)}`}>
                     {question.difficulty}
                   </span>
-                  <p className="mt-2 truncate font-medium text-gray-900 dark:text-white">{question.title}</p>
+                  <p className="mt-2 truncate font-medium text-gray-900 dark:text-white">
+                    {getQuestionDisplayTitle(question.section, question.title)}
+                  </p>
                   <p className="text-sm text-gray-500 dark:text-[#94a3b8]">{question.topic}</p>
                 </div>
                 <div className="text-right text-sm">

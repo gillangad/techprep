@@ -1,20 +1,15 @@
-import { Binary, Code2, Cpu, Database, LayoutList, Lock } from "lucide-react";
-import type { ComponentType } from "react";
+import { Code2, Lock } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import type { Plan, Section } from "../types";
 import { canAccess } from "../utils/access";
+import { SECTION_META } from "../utils/sections";
 
 type SidebarProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const tabs: Array<{ label: string; section: Section; icon: ComponentType<{ className?: string }> }> = [
-  { label: "DSA Interview Questions", section: "dsa", icon: Binary },
-  { label: "SQL Interview Questions", section: "sql", icon: Database },
-  { label: "Core CS Interview Questions", section: "core-cs", icon: Cpu },
-  { label: "All Interview Questions", section: "all", icon: LayoutList },
-];
+const tabs: Section[] = ["dsa", "sql", "core-cs", "system-design", "all"];
 
 function getPlanBadgeClass(plan: Plan) {
   if (plan === "free") return "bg-blue-500/20 text-blue-500";
@@ -53,16 +48,16 @@ function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <nav className="space-y-2">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const locked = !canAccess(plan, tab.section);
-            const active = activeTab === tab.section;
+          {tabs.map((section) => {
+            const { collectionLabel, icon: Icon } = SECTION_META[section];
+            const locked = !canAccess(plan, section);
+            const active = activeTab === section;
 
             return (
               <button
-                key={tab.section}
+                key={section}
                 type="button"
-                onClick={() => handleTabClick(tab.section)}
+                onClick={() => handleTabClick(section)}
                 className={`flex w-full items-center justify-between rounded-lg border-l-4 px-3 py-2 text-left text-sm transition-all duration-200 ${
                   active
                     ? "border-blue-500 bg-blue-50 text-gray-900 dark:bg-[#1e293b] dark:text-white"
@@ -71,7 +66,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
               >
                 <span className="flex items-center gap-2">
                   <Icon className="h-4 w-4" />
-                  {tab.label}
+                  {collectionLabel}
                 </span>
                 {locked && <Lock className="h-4 w-4 text-gray-400 dark:text-[#6b7280]" />}
               </button>

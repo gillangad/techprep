@@ -80,6 +80,33 @@
       "topic": "Networking",
       "status": "completed",
       "lastAttemptedAt": "2026-03-17T10:10:00Z"
+    },
+    {
+      "id": "system-1",
+      "title": "Design a URL Shortener",
+      "difficulty": "Medium",
+      "section": "system-design",
+      "topic": "Scalability",
+      "status": "not-started",
+      "lastAttemptedAt": null
+    },
+    {
+      "id": "system-3",
+      "title": "Design a Real-Time Chat System",
+      "difficulty": "Medium",
+      "section": "system-design",
+      "topic": "Messaging",
+      "status": "not-started",
+      "lastAttemptedAt": null
+    },
+    {
+      "id": "system-5",
+      "title": "Design a Distributed Job Scheduler",
+      "difficulty": "Hard",
+      "section": "system-design",
+      "topic": "Distributed Systems",
+      "status": "not-started",
+      "lastAttemptedAt": null
     }
   ],
   "leaderboard": [
@@ -233,6 +260,14 @@
       "difficulty": "Medium",
       "section": "core-cs",
       "topic": "OS",
+      "completed": false
+    },
+    {
+      "id": "dc-4",
+      "title": "Design a Rate Limiter",
+      "difficulty": "Medium",
+      "section": "system-design",
+      "topic": "Traffic Control",
       "completed": false
     }
   ],
@@ -418,6 +453,70 @@
       "solution": {
         "explanation": "Virtual memory paging divides physical memory (RAM) and virtual address space into fixed-size blocks called frames and pages respectively. When a process accesses a memory address, the Memory Management Unit (MMU) translates the virtual page number to a physical frame number using a page table. If the page is not in RAM (a page fault), the OS loads it from disk (swap space) into an available frame. This allows processes to use more memory than physically available, provides memory isolation between processes, and eliminates external fragmentation since all pages are the same size. Key components include the page table, TLB (Translation Lookaside Buffer) for fast lookups, and the page replacement algorithm (like LRU) for deciding which pages to evict when memory is full.",
         "code": ""
+      }
+    },
+    {
+      "id": "system-1",
+      "description": "Design a URL shortening service like Bitly. The system should create short aliases for long URLs, redirect users with low latency, support custom aliases, and provide basic click analytics.",
+      "examples": [
+        {
+          "input": "Create short URL for https://example.com/blog/system-design-interview",
+          "output": "https://sho.rt/aZ91xK",
+          "explanation": "The service stores a unique short code mapped to the original long URL and returns the shortened link."
+        }
+      ],
+      "hint": "Start with the core APIs and data model, then think through how you would generate unique short codes, handle redirects quickly, and scale reads far beyond writes.",
+      "solution": {
+        "explanation": "A strong answer defines two main APIs: createShortUrl(longUrl, customAlias?) and redirect(shortCode). Store mappings in a durable primary datastore keyed by short code, keep a uniqueness constraint for custom aliases, and generate new codes with a base62-encoded ID or a collision-resistant random generator. Because redirects dominate traffic, place a cache in front of the datastore and serve redirects from edge locations when possible. Write click events asynchronously to a queue so analytics do not slow down redirects. Mention expiration, abuse prevention, and observability to round out the design.",
+        "code": "Core components:\\n1. API gateway and app servers for create + redirect endpoints\\n2. URL metadata store keyed by shortCode\\n3. Cache layer for hot redirects\\n4. Async event pipeline for click analytics\\n5. Optional custom-alias service and abuse detection\\n\\nKey trade-offs:\\n- Base62 IDs are simple but require ID generation coordination\\n- Random codes avoid sequential IDs but need collision checks\\n- Strong consistency is important for alias uniqueness; redirect analytics can be eventually consistent"
+      }
+    },
+    {
+      "id": "system-3",
+      "description": "Design a real-time chat system that supports one-to-one messaging, group conversations, online presence, message delivery acknowledgments, and push notifications for offline users.",
+      "examples": [
+        {
+          "input": "User A sends \"Hey\" to User B while User B is offline.",
+          "output": "The message is persisted, a push notification is triggered, and the message is delivered when User B reconnects.",
+          "explanation": "The system separates durable message storage from live delivery so temporary disconnects do not lose data."
+        }
+      ],
+      "hint": "Model the send-message flow first, then add delivery states, fan-out for groups, websocket connection management, and offline notification handling.",
+      "solution": {
+        "explanation": "A solid design uses websocket gateways for persistent client connections, stateless chat services for auth and routing, and a durable message store for conversation history. On send, persist the message first, then publish an event to a broker for fan-out to recipients. Maintain presence in an in-memory store with heartbeat updates, and use per-device acknowledgments to track sent, delivered, and read states. For groups, fan-out can happen on write for small groups and on read for very large groups. Push notifications should be generated only for users who are not actively connected.",
+        "code": "Core components:\\n1. Websocket gateway fleet\\n2. Chat service for auth, routing, and conversation APIs\\n3. Message store partitioned by conversationId\\n4. Broker for delivery fan-out and retry handling\\n5. Presence store with TTL heartbeats\\n6. Push notification worker for offline devices\\n\\nGood follow-ups:\\n- Ordering guarantees within a conversation\\n- Idempotent retries with message IDs\\n- Media attachments via object storage + signed URLs"
+      }
+    },
+    {
+      "id": "system-5",
+      "description": "Design a distributed job scheduler that allows users to submit background jobs, schedule recurring jobs, retry failures, and monitor execution across a fleet of workers.",
+      "examples": [
+        {
+          "input": "Run a data export job every night at 2 AM and retry up to 3 times on failure.",
+          "output": "The scheduler enqueues the job at the scheduled time, workers claim it safely, and failed attempts are retried with tracked status.",
+          "explanation": "The scheduler coordinates timing, durable state, worker leasing, retries, and visibility into execution."
+        }
+      ],
+      "hint": "Break the problem into job definition storage, trigger generation, queueing, worker coordination, retries, and operational safety like deduplication and leases.",
+      "solution": {
+        "explanation": "A good design separates scheduling from execution. Store job definitions and schedules durably, then use a scheduler service to materialize due runs into an execution queue. Workers poll or receive jobs, acquire a lease, and heartbeat while processing so stuck work can be reassigned after timeout. Keep execution state transitions in a durable store for monitoring and retries. Add exponential backoff, dead-letter handling, and idempotency keys because distributed execution always creates duplicate-delivery risk. Horizontal scale comes from partitioning queues and job metadata by tenant or job family.",
+        "code": "Core components:\\n1. Job definition store\\n2. Scheduler that scans for due jobs\\n3. Execution queue with visibility timeouts or leases\\n4. Worker fleet with heartbeats\\n5. Execution state store for status + history\\n6. Retry / dead-letter policy engine\\n\\nImportant trade-offs:\\n- Polling is simpler; push reduces latency but adds coordination\\n- At-least-once execution is practical, so handlers should be idempotent\\n- Scheduler scans need sharding to avoid hot partitions"
+      }
+    },
+    {
+      "id": "dc-4",
+      "description": "Design a rate limiter for a public API. The limiter should protect backend services from abuse, enforce per-user and per-IP quotas, and work correctly across multiple application servers.",
+      "examples": [
+        {
+          "input": "Allow 100 requests per minute per API key.",
+          "output": "Requests above the threshold receive a 429 response until enough time passes for the client to fall back under the limit.",
+          "explanation": "The limiter tracks usage in a rolling or fixed time window and rejects requests after the configured budget is exhausted."
+        }
+      ],
+      "hint": "Choose an algorithm first, then explain where the limiter runs, how counters are shared across servers, and what happens when the limiter store is unavailable.",
+      "solution": {
+        "explanation": "A practical design uses a token bucket or sliding-window counter backed by a fast centralized store like Redis. Put the rate-limiting check close to the edge, such as in an API gateway, so rejected requests do not consume downstream capacity. Key counters by API key, IP, or tenant depending on policy, and set expirations to keep the dataset bounded. For global correctness across multiple servers, all instances must consult the same logical counter store or a sharded equivalent. Discuss fallback behavior carefully: failing open protects availability, while failing closed protects the backend.",
+        "code": "Core components:\\n1. API gateway / middleware\\n2. Shared counter store (for example Redis)\\n3. Policy config service\\n4. Metrics + alerting for rejected traffic\\n\\nCommon algorithms:\\n- Token bucket: smooth bursts with steady refill\\n- Fixed window: simple but can spike at boundaries\\n- Sliding window: fairer but more expensive\\n\\nKey follow-up:\\nPick token bucket when you want predictable burst handling with simple implementation"
       }
     }
   ]

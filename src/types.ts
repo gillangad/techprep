@@ -1,6 +1,6 @@
 export type Plan = "free" | "pro" | "premium";
 
-export type Section = "dsa" | "sql" | "core-cs" | "all";
+export type Section = "dsa" | "sql" | "core-cs" | "system-design" | "all";
 
 export interface Question {
   id: string;

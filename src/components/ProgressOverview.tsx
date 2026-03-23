@@ -1,12 +1,14 @@
-import { Code2, Cpu, Database, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { canAccess } from "../utils/access";
+import { SECTION_META } from "../utils/sections";
 import Skeleton from "./Skeleton";
 
 const trackStyles = {
-  dsa: { color: "bg-blue-500", text: "text-blue-500", icon: Code2 },
-  sql: { color: "bg-purple-500", text: "text-purple-500 dark:text-purple-400", icon: Database },
-  "core-cs": { color: "bg-cyan-500", text: "text-cyan-500", icon: Cpu },
+  dsa: { color: "bg-blue-500", text: "text-blue-500" },
+  sql: { color: "bg-purple-500", text: "text-purple-500 dark:text-purple-400" },
+  "core-cs": { color: "bg-cyan-500", text: "text-cyan-500" },
+  "system-design": { color: "bg-emerald-500", text: "text-emerald-500 dark:text-emerald-400" },
 };
 
 function ProgressOverview() {
@@ -16,8 +18,8 @@ function ProgressOverview() {
     return (
       <div className="rounded-xl border border-gray-200 bg-white/80 p-6 dark:border-[#1f2937] dark:bg-[#1e293b]">
         <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Progress Overview</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {[1, 2, 3].map((item) => (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {[1, 2, 3, 4].map((item) => (
             <div key={item} className="space-y-3 rounded-xl border border-gray-200 bg-white p-5 dark:border-[#1f2937] dark:bg-[#0f172a]">
               <Skeleton className="h-4 w-2/3" />
               <Skeleton className="h-2 w-full" />
@@ -33,10 +35,12 @@ function ProgressOverview() {
     return (
       <div className="rounded-xl border border-gray-200 bg-white/80 p-6 dark:border-[#1f2937] dark:bg-[#1e293b]">
         <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Progress Overview</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {["DSA", "SQL", "Core CS"].map((label) => (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {["DSA", "SQL", "Core CS", "System Design"].map((label) => (
             <div key={label} className="rounded-xl border border-gray-200 bg-white p-5 text-gray-500 dark:border-[#1f2937] dark:bg-[#0f172a] dark:text-[#94a3b8]">
-              <p className="font-medium text-gray-900 dark:text-white">{label} Interview Questions</p>
+              <p className="font-medium text-gray-900 dark:text-white">
+                {label === "System Design" ? "System Design Mock Questions" : `${label} Interview Questions`}
+              </p>
               <p className="mt-2 text-sm">No data available</p>
             </div>
           ))}
@@ -48,10 +52,10 @@ function ProgressOverview() {
   return (
     <div className="rounded-xl border border-gray-200 bg-white/80 p-6 dark:border-[#1f2937] dark:bg-[#1e293b]">
       <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Progress Overview</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
         {progress.map((track) => {
           const style = trackStyles[track.section as keyof typeof trackStyles];
-          const Icon = style.icon;
+          const Icon = SECTION_META[track.section].icon;
           const percentage = track.total === 0 ? 0 : Math.round((track.completed / track.total) * 100);
           const locked = !canAccess(plan, track.section);
 
