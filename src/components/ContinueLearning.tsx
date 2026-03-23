@@ -1,6 +1,6 @@
 import { BookOpen } from "lucide-react";
 import { useApp } from "../context/AppContext";
-import { getQuestionDisplayTitle } from "../utils/sections";
+import { getQuestionDisplayTitle, isSystemDesignSection } from "../utils/sections";
 import EmptyState from "./EmptyState";
 import Skeleton from "./Skeleton";
 
@@ -62,7 +62,9 @@ function ContinueLearning() {
                   <p className="mt-2 truncate font-medium text-gray-900 dark:text-white">
                     {getQuestionDisplayTitle(question.section, question.id, question.title)}
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-[#94a3b8]">{question.topic}</p>
+                  {!isSystemDesignSection(question.section) && (
+                    <p className="text-sm text-gray-500 dark:text-[#94a3b8]">{question.topic}</p>
+                  )}
                 </div>
                 <div className="text-right text-sm">
                   {question.status === "attempted" ? (

@@ -169,12 +169,16 @@ function QuestionDetail({ questionId, onBack, theme, onToggleTheme }: QuestionDe
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${getDifficultyClass(displayQuestion.difficulty)}`}>
                 {displayQuestion.difficulty}
               </span>
-              <span className="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-medium text-blue-400">
-                {displayQuestion.topic}
-              </span>
-              <span className="rounded-full bg-gray-500/20 px-2.5 py-0.5 text-xs font-medium text-gray-400 dark:text-gray-300">
-                {getSectionName(displayQuestion.section)}
-              </span>
+              {!isSystemDesignQuestion && (
+                <span className="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-medium text-blue-400">
+                  {displayQuestion.topic}
+                </span>
+              )}
+              {!isSystemDesignQuestion && (
+                <span className="rounded-full bg-gray-500/20 px-2.5 py-0.5 text-xs font-medium text-gray-400 dark:text-gray-300">
+                  {getSectionName(displayQuestion.section)}
+                </span>
+              )}
               {question && (
                 <span
                   className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${

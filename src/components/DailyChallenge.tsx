@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchDailyChallenge } from "../api/mockApi";
 import { useApp } from "../context/AppContext";
 import type { DailyChallenge as DailyChallengeType } from "../types";
-import { getQuestionDisplayTitle, getSectionName } from "../utils/sections";
+import { getQuestionDisplayTitle, getSectionName, isSystemDesignSection } from "../utils/sections";
 import EmptyState from "./EmptyState";
 import Skeleton from "./Skeleton";
 
@@ -17,6 +17,7 @@ function DailyChallenge() {
   const { openQuestion } = useApp();
   const [challenge, setChallenge] = useState<DailyChallengeType | null>(null);
   const [loading, setLoading] = useState(true);
+  const hideSystemDesignTags = challenge ? isSystemDesignSection(challenge.section) : false;
 
   useEffect(() => {
     const loadChallenge = async () => {
@@ -56,12 +57,16 @@ function DailyChallenge() {
             {getQuestionDisplayTitle(challenge.section, challenge.id, challenge.title)}
           </p>
           <div className="mt-2 flex flex-wrap gap-2 text-xs">
-            <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-500 dark:bg-[#334155] dark:text-[#94a3b8]">
-              {challenge.topic}
-            </span>
-            <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-500 dark:bg-[#334155] dark:text-[#94a3b8]">
-              {getSectionName(challenge.section)}
-            </span>
+            {!hideSystemDesignTags && (
+              <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-500 dark:bg-[#334155] dark:text-[#94a3b8]">
+                {challenge.topic}
+              </span>
+            )}
+            {!hideSystemDesignTags && (
+              <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-500 dark:bg-[#334155] dark:text-[#94a3b8]">
+                {getSectionName(challenge.section)}
+              </span>
+            )}
             <span className={`rounded-full px-2 py-1 ${getDifficultyClass(challenge.difficulty)}`}>
               {challenge.difficulty}
             </span>
