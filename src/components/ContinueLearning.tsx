@@ -24,6 +24,8 @@ function ContinueLearning() {
     })
     .slice(0, 3);
 
+  const displayQuestions = recentQuestions.length > 0 ? recentQuestions : filteredByTab.slice(0, 3);
+
   return (
     <div className="rounded-xl border border-gray-200 bg-white/80 p-6 dark:border-[#1f2937] dark:bg-[#1e293b]">
       <div className="mb-4 flex items-center gap-2">
@@ -41,11 +43,11 @@ function ContinueLearning() {
             </div>
           ))}
         </div>
-      ) : recentQuestions.length === 0 ? (
+      ) : displayQuestions.length === 0 ? (
         <EmptyState message="No questions attempted yet. Start solving!" />
       ) : (
         <div className="space-y-3">
-          {recentQuestions.map((question) => (
+          {displayQuestions.map((question) => (
             <button
               key={question.id}
               type="button"
@@ -65,6 +67,8 @@ function ContinueLearning() {
                 <div className="text-right text-sm">
                   {question.status === "attempted" ? (
                     <span className="text-blue-500">Resume →</span>
+                  ) : question.status === "not-started" ? (
+                    <span className="text-blue-500">Start →</span>
                   ) : (
                     <span className="text-green-500">✅ Completed</span>
                   )}
